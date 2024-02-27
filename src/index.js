@@ -49,6 +49,31 @@ function handleSearchSubmit(event) {
 
   searchCity(searchInput.value);
 }
+function getForecast(city) {
+  let apiKey = "96574tb3d9054b0ffad57ffob464d258";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&unit=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response) {
+  console.log(response.data);
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon"></div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature"> <strong>15º</strong></div>
+          <div class = 'weather-forecast-temperature'>7º</div>
+        </div>
+      </div>`;
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
