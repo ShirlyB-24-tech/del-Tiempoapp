@@ -51,19 +51,21 @@ function handleSearchSubmit(event) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
   return days[date.getDay()];
 }
+
 function getForecast(city) {
   let apiKey = "96574tb3d9054b0ffad57ffob464d258";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&unit=metric`;
-
-  axios.get(apiUrl).then(displayForecast);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 
   getForecast(response.data.city);
 }
 
-function displayForecast(response) {
+function display(response) {
   let forecastHtml = "";
+
   response.data.daily.forEach(function (day, index) {
     if (index < 5) {
       forecastHtml =
