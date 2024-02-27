@@ -17,11 +17,6 @@ function updateWeather(response) {
   temperatureElement.innerHTML = Math.round(temperature);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 }
-function searchCity(city) {
-  let apiKey = "96574tb3d9054b0ffad57ffob464d258";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
-  axios.get(apiUrl).then(updateWeather);
-}
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
@@ -43,6 +38,11 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function searchCity(city) {
+  let apiKey = "96574tb3d9054b0ffad57ffob464d258";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
+  axios.get(apiUrl).then(updateWeather);
+}
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
@@ -80,6 +80,7 @@ function displayForecast(response) {
       </div>`;
     }
   });
+
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
