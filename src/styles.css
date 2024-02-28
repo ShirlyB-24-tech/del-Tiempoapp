@@ -41,6 +41,7 @@ main {
 .weather-app-data {
   display: flex;
   justify-content: space-between;
+  color: rgba(36, 13, 137, 0.4);
 }
 .weather-app-city {
   margin: 0;
@@ -79,14 +80,14 @@ main {
 }
 .weather-forecast-date {
   text-align: center;
-  color: #9672f2;
+  color: #622de9;
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 10px;
 }
 .weather-forecast-temperatures {
   text-align: center;
-  color: #f65282;
+  color: #c9426b;
   margin-top: 10px;
   display: flex;
   justify-content: center;
